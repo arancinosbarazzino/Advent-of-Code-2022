@@ -9,7 +9,7 @@ public class Giorno1 {
     public static void main(String[] args) throws FileNotFoundException {
         int somma = 0;
         ArrayList<Integer> numbers = new ArrayList<>();
-        File file = new File("C:/Users/Samuele/Advent-of-Code-2022/Giorno2/file.txt");
+        File file = new File("C:/Users/Samuele/Advent-of-Code-2022/Giorno1/file.txt");
         Scanner input = new Scanner(file);
         while (input.hasNextLine()) {
             String line = input.nextLine();
