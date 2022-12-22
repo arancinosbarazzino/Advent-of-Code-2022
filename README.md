@@ -4,7 +4,7 @@ Codice Scritto in Java per la [Advent of Code 2022](https://adventofcode.com) :D
 
 - [x] Giorno 1
 - [x] Giorno 2
-- [ ] Giorno 3
+- [x] Giorno 3
 - [ ] Giorno 4
 - [ ] Giorno 5
 - [ ] Giorno 6
