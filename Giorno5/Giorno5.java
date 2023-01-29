@@ -63,8 +63,8 @@ public class Giorno5 {
         // gaming
         for (String[] linea : arrayT) {
             Stack<String> stk = new Stack<>();
-            for (int counter = linea.length -1; counter>=0; counter--) {
-                String c = linea[counter]; 
+            for (int counter = linea.length - 1; counter >= 0; counter--) {
+                String c = linea[counter];
                 if (c != "") {
                     stk.push(c);
                 }
@@ -74,15 +74,11 @@ public class Giorno5 {
         return lista;
     }
 
-    public static List<Stack<String>> moveStrings(List<Stack<String>> lista, File file, Scanner input) {
+    public static List<Stack<String>> moveStrings1(List<Stack<String>> lista, File file, Scanner input) {
         int nds; // numero di lettere da spostare
         int np; // numero di provenienza dei crate
         int na; // numero di arrivo dei crate
         String[] array1;
-        for (int i = 0; i < lista.size(); i++) {
-            System.out.println(lista.get(i).toString());
-        }
-        System.out.println("\n\n\n");
         while (input.hasNextLine()) {
             String line = input.nextLine();
             if (line.startsWith("m")) {
@@ -104,7 +100,53 @@ public class Giorno5 {
             if (!lista.get(i).empty()) {
                 System.out.println(lista.get(i).toString());
             }
-           
+        }
+        return lista;
+    }
+    public static Stack<String> cleanStack(Stack<String> stack){
+        for(int i=0;i<stack.size();i++){
+            if(stack.get(i).isEmpty()){
+                stack.remove(i);
+            }
+        }
+        return stack;
+    }
+
+    public static List<Stack<String>> moveStrings2(List<Stack<String>> lista, File file, Scanner input) {
+        int nds; // numero di lettere da spostare
+        int np; // numero di provenienza dei crate
+        int na; // numero di arrivo dei crate
+        String[] array1;
+        while (input.hasNextLine()) {
+            String line = input.nextLine();
+            if (line.startsWith("m")) {
+                array1 = line.split(" ");
+                // mi salvo il numero di lettere da spostare, quale linea prendere di partenza e quale di arrivo
+                nds = Integer.parseInt(array1[1]);
+                np = Integer.parseInt(array1[3]);
+                na = Integer.parseInt(array1[5]);
+                Stack<String> startStack = lista.get(np - 1); // prendo lo stack iniziale
+                Stack<String> endStack = lista.get(na - 1); // prendo lo stack di destinazione per modificarlo
+                ArrayList<String> temp = new ArrayList<String>(); // inizializzo un array dove salvare i crate che sposto
+                startStack=cleanStack(startStack);
+                endStack=cleanStack(endStack);
+                for (int i = 0; i < nds; i++) {
+                    if (!startStack.isEmpty() && !startStack.lastElement().isEmpty()) {
+                        temp.add(startStack.pop()); // prendo lo stack e lo salvo dentro un array
+                    }
+                }
+                for (int i = temp.size() - 1; i >= 0; i--) { // scorro l'array al contrario per avere i crate esattamente come erano posizionati prima
+                    if (!temp.isEmpty()) {
+                            endStack.push(temp.get(i));
+                    }
+                }
+                String s = null;
+            }
+        }
+        for (int i = 0; i < lista.size(); i++) {
+            if (!lista.get(i).empty()) {
+                System.out.println(lista.get(i).toString());
+            }
         }
         return lista;
     }
@@ -127,24 +169,25 @@ public class Giorno5 {
 
     public static void primaParte() throws FileNotFoundException {
         List<Stack<String>> lista = new ArrayList<Stack<String>>();
-        File file = new File("C:/Users/Samuele/Advent-of-Code-2022/Giorno5/file.txt");
+        File file = new File("/home/arancia/Uni/Programmazione/Java/Advent-of-Code-2022/Giorno5/file.txt");
         Scanner input = new Scanner(file);
-        lista = moveStrings(arrayToList(cleanArrayStrings(getCratesArray(file, input))), file, input);
-        // for(int i=0;i<lista.size();i++){
-        // System.out.println(lista.get(i).toString());
-        // }
+        lista = moveStrings1(arrayToList(cleanArrayStrings(getCratesArray(file, input))), file, input);
         System.out.println(getResults(lista));
         input.close();
     }
 
     public static int secondaParte() throws FileNotFoundException {
-        File file = new File("C:/Users/Samuele/Advent-of-Code-2022/Giorno5/file.txt");
+        File file = new File("/home/arancia/Uni/Programmazione/Java/Advent-of-Code-2022/Giorno5/file.txt");
         Scanner input = new Scanner(file);
+        List<Stack<String>> lista = new ArrayList<Stack<String>>();
+        lista = moveStrings2(arrayToList(cleanArrayStrings(getCratesArray(file, input))), file, input);
+        System.out.println(getResults(lista));
         input.close();
         return 0;
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        primaParte();
+        // primaParte();
+        secondaParte();
     }
 }
