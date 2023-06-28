@@ -8,16 +8,11 @@ import java.util.Set;
 
 public class Giorno6 {
 
-  public static int primaParte() throws IOException {
+  public static int primaParte(BufferedReader br) throws IOException {
     char[] caratteri = new char[4];
     int i = 0;
     int conta = 0;
     char carattere;
-    BufferedReader br = new BufferedReader(
-      new FileReader(
-        "Giorno6/file.txt"
-      )
-    );
     while (br.ready()) {
       conta++;
       if (i == 4) {
@@ -46,16 +41,11 @@ public class Giorno6 {
     return false;
   }
 
-  public static int secondaParte() throws IOException {
+  public static int secondaParte(BufferedReader br) throws IOException {
     char[] caratteri = new char[14];
     int i = 0;
     int conta = 0;
     char carattere;
-    BufferedReader br = new BufferedReader(
-      new FileReader(
-        "Giorno6/file.txt"
-      )
-    );
     while (br.ready()) {
       conta++;
       if (i == 14) {
@@ -74,7 +64,9 @@ public class Giorno6 {
   }
 
   public static void main(String[] args) throws IOException {
-    // System.out.println(primaParte());
-    System.out.println(secondaParte());
+    BufferedReader br = new BufferedReader(new FileReader("Giorno6/file.txt"));
+    System.out.println(primaParte(br));
+    System.out.println(secondaParte(br));
+    br.close();
   }
 }
