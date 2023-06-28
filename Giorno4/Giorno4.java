@@ -15,9 +15,7 @@ public class Giorno4 {
   public static int PrimaParte() throws FileNotFoundException {
     int totale = 0;
     String[] primo, secondo, array;
-    File file = new File(
-      "C:/Users/Samuele/Advent-of-Code-2022/Giorno4/file.txt"
-    );
+    File file = new File("Giorno4/file.txt");
     Scanner input = new Scanner(file);
     while (input.hasNextLine()) {
       String line = input.nextLine();
@@ -45,9 +43,7 @@ public class Giorno4 {
   public static int SecondaParte() throws FileNotFoundException {
     int totale = 0;
     String[] primo, secondo, array;
-    File file = new File(
-      "C:/Users/Samuele/Advent-of-Code-2022/Giorno4/file.txt"
-    );
+    File file = new File("Giorno4/file.txt");
     Scanner input = new Scanner(file);
     while (input.hasNextLine()) {
       String line = input.nextLine();

@@ -169,7 +169,7 @@ public class Giorno5 {
 
     public static void primaParte() throws FileNotFoundException {
         List<Stack<String>> lista = new ArrayList<Stack<String>>();
-        File file = new File("/home/arancia/Uni/Programmazione/Java/Advent-of-Code-2022/Giorno5/file.txt");
+        File file = new File("Giorno5/file.txt");
         Scanner input = new Scanner(file);
         lista = moveStrings1(arrayToList(cleanArrayStrings(getCratesArray(file, input))), file, input);
         System.out.println(getResults(lista));
@@ -177,7 +177,7 @@ public class Giorno5 {
     }
 
     public static int secondaParte() throws FileNotFoundException {
-        File file = new File("/home/arancia/Uni/Programmazione/Java/Advent-of-Code-2022/Giorno5/file.txt");
+        File file = new File("Giorno5/file.txt");
         Scanner input = new Scanner(file);
         List<Stack<String>> lista = new ArrayList<Stack<String>>();
         lista = moveStrings2(arrayToList(cleanArrayStrings(getCratesArray(file, input))), file, input);

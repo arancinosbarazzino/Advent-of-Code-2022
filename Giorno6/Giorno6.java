@@ -15,7 +15,7 @@ public class Giorno6 {
     char carattere;
     BufferedReader br = new BufferedReader(
       new FileReader(
-        "C:\\Users\\Samu\\Documents\\vscode\\Advent-of-Code-2022\\Giorno6\\file.txt"
+        "Giorno6/file.txt"
       )
     );
     while (br.ready()) {
@@ -53,7 +53,7 @@ public class Giorno6 {
     char carattere;
     BufferedReader br = new BufferedReader(
       new FileReader(
-        "C:\\Users\\Samu\\Documents\\vscode\\Advent-of-Code-2022\\Giorno6\\file.txt"
+        "Giorno6/file.txt"
       )
     );
     while (br.ready()) {
