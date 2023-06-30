@@ -8,7 +8,8 @@ import java.util.HashSet;
 import java.util.Stack;
 
 public class Giorno7 {
-//RICORDATI DI FIXARE STA COSA: POSSONO ESSERCI CARTELLE CHE ENTRANO DENTRO CARTELLE CON LO STESSO NOME DEL PADRE
+
+  //RICORDATI DI FIXARE STA COSA: POSSONO ESSERCI CARTELLE CHE ENTRANO DENTRO CARTELLE CON LO STESSO NOME DEL PADRE
   public static int primaParte(BufferedReader br) throws IOException {
     HashMap<String, Integer> directories = CreaDirectories(br);
     directories.toString();
@@ -38,6 +39,9 @@ public class Giorno7 {
         directoryAttuale = linea.substring(5);
         if (!directoryAttuale.equals("..") && directoryAttuale != null) {
           oldDirectories.push(directoryAttuale); //aggiungo le directory che diventeranno le precedenti
+          directoryAttuale=directoryAttuale+oldDirectories.size(); //modo per avere nomi unici per ogni directory
+          oldDirectories.pop();
+          oldDirectories.push(directoryAttuale);
         }
         if (directoryAttuale.equals("..")) { //caso in cui '$cd ..'
           files.put(directoryAttuale, null);
